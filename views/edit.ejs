@@ -1,0 +1,83 @@
+<% layout('/layouts/boilerplate') %>
+  <h2 class="heading mb-5">Edit Item</h2>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form method="POST" action="/items/<%= item._id %>?_method=PUT" class="needs-validation" novalidate>
+        <div class="row">
+          <div class="mb-3 col-md-7">
+              <label for="item" class="form-label">Enter the Item name </label>
+              <input
+                name="items[item]"
+                type="text"
+                value="<%= item.item %>"
+                id="item"
+                class="form-control"
+                required
+              />
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+              <div class="invalid-feedback">
+                You must have a item name.
+              </div>
+            </div>
+            <div class="mb-3 col-md-5">
+              <label for="price" class="form-label"
+                >Enter the price of the item</label
+              >
+              <input
+                name="items[price]"
+                type="number"
+                value="<%= item.price %>"
+                id="price"
+                class="form-control"
+                required
+              />
+              <div class="invalid-feedback">
+                You must set a price.
+              </div>
+            </div> 
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label"
+          >Enter the Description about The Item</label
+        >
+        <input
+          name="items[description]"
+          type="text"
+          value="<%= item.description %>"
+          id="description"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          You must descrive your item.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Enter the Image Link </label>
+        <input
+          name="items[image]"
+          type="text"
+          value="<%= item.image %>"
+          id="image"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          You must have a image.
+        </div>
+      </div>
+      <button class="btn btn-dark mb-3 col-md-3 ">Edit</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/formValidation.js"></script>
+

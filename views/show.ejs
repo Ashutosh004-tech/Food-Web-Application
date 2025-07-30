@@ -1,0 +1,173 @@
+<% layout('/layouts/boilerplate') %>
+<h2 class="heading"><%= item.item %></h2>
+<% if(!isAdmin ){ %>
+<a href="/order/cart" class="btn cart-btn"
+  ><i class="fa-solid fa-cart-shopping"></i>
+  <% if(crnUser && crnUser.order.length) { %>
+  <span
+    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+  >
+    <%= crnUser.order.length %>
+    <span class="visually-hidden">unread messages</span>
+  </span>
+  <% } %>
+</a>
+<% } %>
+<div class="row mb-3">
+  <div class="col-md-6 offset-md-3">
+    <div class="card show-card-container">
+      <img
+        src="<%= item.image %>"
+        class="card-img-top show-card-img"
+        alt="..."
+      />
+      <div class="card-body">
+        <h4 class="card-text"><b>Owned By : </b> <%= item.owner.shopName %></h4>
+        <p class="card-text">
+          <%= item.description %>
+          <br />
+          &#8377; <%= item.price %>
+        </p>
+      </div>
+
+      <!-- Delete And Edit Button -->
+      <% if(crnUser && crnUser._id.equals(item.owner._id)){ %>
+      <div class="show-card-btn">
+        <button
+          onclick="location.href='/items/<%= item._id%>/edit'"
+          class="btn btn-primary mb-3 show-card-btns"
+        >
+          Edit Item
+        </button>
+        <form method="POST" action="/items/<%= item._id  %>?_method=DELETE">
+          <button class="btn btn-danger mb-3 show-card-btns">Delete</button>
+        </form>
+      </div>
+      <% } %>
+      
+      <!-- Buy Button -->
+      <a href="/order/<%= item._id %>" class="btn btn-success show-buy-btn"
+        >Buy Now</a
+      >
+
+      <!-- Review Section -->
+      <% if(crnUser && !isAdmin){ %>
+      <div class="review-container">
+        <h3>Leave a Review</h3>
+        <form
+          method="POST"
+          action="/items/<%= item._id %>/reviews"
+          class="needs-validation"
+          novalidate
+        >
+          <div class="col-md-5 offset-md-1">
+            <label for="rating" class="form-label"> <b>Rating</b></label>
+            <fieldset class="starability-slot">
+              <input
+                type="radio"
+                id="no-rate"
+                class="input-no-rate"
+                name="review[rating]"
+                value="1"
+                checked
+                aria-label="No rating."
+              />
+              <input
+                type="radio"
+                id="first-rate1"
+                name="review[rating]"
+                value="1"
+              />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input
+                type="radio"
+                id="first-rate2"
+                name="review[rating]"
+                value="2"
+              />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input
+                type="radio"
+                id="first-rate3"
+                name="review[rating]"
+                value="3"
+              />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input
+                type="radio"
+                id="first-rate4"
+                name="review[rating]"
+                value="4"
+              />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input
+                type="radio"
+                id="first-rate5"
+                name="review[rating]"
+                value="5"
+              />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+          <div class="col-md-6 offset-md-1">
+            <label for="comment" class="form-label"
+              ><b>leave a comment</b></label
+            >
+            <textarea
+              name="review[comment]"
+              id="comment"
+              class="form-control"
+              required
+            ></textarea>
+            <div class="valid-feedback">Thank you</div>
+            <div class="invalid-feedback">Empty reviews invalid.</div>
+          </div>
+          <button class="btn btn-outline-warning mb-2 mt-3 offset-md-1">
+            Submit
+          </button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Review Section -->
+ <div class="row">
+  <div class="col-md-6 offset-md-3">
+      <h3 class="text-center mb-4 fw-bold">All Reviews</h3>
+      <% for (review of item.reviews) { %>
+      <div class="card shadow-sm mb-4 border-0 rounded-4">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2 rating-box">
+            <h5 class="card-title mb-0">
+              <i class="bi bi-person-circle me-2"></i>Review by:
+              <strong><%= review.user.username %></strong>
+            </h5>
+            <p
+              class="starability-result mt-3"
+              data-rating="<%= review.rating %>"
+            ></p>
+          </div>
+          <p class="card-text text-muted"><%= review.comment %></p>
+
+          <% if (crnUser && crnUser._id.equals(review.user._id)) { %>
+          <form
+            method="POST"
+            action="/items/<%= item._id %>/reviews/<%= review._id %>?_method=DELETE"
+            class="text-end"
+          >
+            <button class="btn btn-outline-danger btn-sm">Delete</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+
+      <% } %>
+    </div>
+    </div>
+  <!--End Review Section -->
+
+  <script src="/js/cars.js"></script>
+  <script src="/js/formValidation.js"></script>
+</div>

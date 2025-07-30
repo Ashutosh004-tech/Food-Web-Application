@@ -1,0 +1,37 @@
+<% layout('/layouts/boilerplate') %>
+
+  <%- include("./includes/hero.ejs") %>
+  <h2 class="heading">All Items</h2>
+  <% if(!isAdmin ){ %>
+    <a href="/order/cart" class="btn cart-btn"><i class="fa-solid fa-cart-shopping"></i>
+      <% if(crnUser && crnUser.order.length) { %>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <%= crnUser.order.length %>
+        <span class="visually-hidden">Cart Item</span>
+      </span>
+      <% } %>
+    </a>
+    <% } %>
+  <section id="card-section">
+    <div class="card-container" >
+      <% for(item of allItems){ %>
+        <a href="/items/<%= item._id %>" class="itemDetails">
+          <div class="card card-list" style="width: 18rem">
+            <img src="<%= item.image %>" class="card-img-top" alt="..." style="height: 18rem" />
+            <div class="card-body">
+              <h5 class="card-title"><%= item.item %></h5>
+              <p class="card-text"><%= item.description %>
+                <br>
+                <b>&#8377; <%= item.price %></b> 
+              </p>
+              <form action="/order/<%= item._id %>">
+                <button class="btn btn-success mt-2">Buy now</button>
+              </form>
+            </div>
+        </a>
+      </div>
+      <% } %>
+    </div>
+  </section>
+  <script src="/js/cars.js"></script>
+

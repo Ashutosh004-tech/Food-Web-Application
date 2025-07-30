@@ -1,0 +1,362 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.continer{
+    flex: 1;
+}
+.heading{
+    text-align: center;
+    margin-top: 1rem;
+    text-decoration: underline;
+    color: #ffd700;
+}
+/* Navbar style*/
+.navbar-brand{
+    letter-spacing: 0.1rem;
+    color: #ffa500;
+    font-weight: 700;
+    transition: .2s;
+    
+}
+/* Card style*/
+.card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 1.5rem ;
+
+}
+.card-list{
+    margin: 1rem 1rem 1rem 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    
+}
+.card-list.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-img-top{
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.itemDetails{
+    text-decoration: none ;
+    color: black;
+}
+.card-list:hover{
+    opacity: 0.7;
+    transform: scale(1.02);
+}
+/* Footer */
+.f-info{
+    height:10rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #c5d3d2;
+    padding: 0.5rem;
+}
+.f-socila{
+    width: 100%;
+    text-align: center;
+}
+.f-socila i{
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+}
+.f-owner-name{
+    width: 100%;
+    text-align: center;
+}
+.f-owner-name p{
+    margin: 0;
+    font-weight: bold;
+}
+.f-info-links{
+    width: 100%;
+    text-align: center;
+}
+.f-info-links a{
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+/* hero section */
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fffaf0;
+    color: #333;
+  }
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #fff3cd, #ffe6b3);
+  }
+  
+  .hero-content {
+    text-align: center;
+    max-width: 700px;
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d35400;
+    animation: slideDown 0.8s ease-out forwards;
+  }
+  
+  .title span {
+    color: #c0392b;
+  }
+  
+  .subtitle {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #555;
+    animation: fadeIn 1.2s ease-out forwards;
+  }
+  
+  .buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: scaleIn 1.5s ease-out forwards;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
+  
+  .btn.primary {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .btn.primary:hover {
+    background-color: #c0392b;
+  }
+  
+  .btn.secondary {
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+    background-color: transparent;
+  }
+  
+  .btn.secondary:hover {
+    background-color: #f9d6d5;
+  }
+  
+  .hero-img {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: slideUp 1.8s ease-out forwards;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0 }
+    to { transform: translateY(0); opacity: 1 }
+  }
+  
+  @keyframes scaleIn {
+    from { transform: scale(0); opacity: 0 }
+    to { transform: scale(1); opacity: 1 }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0 }
+    to { transform: translateY(0); opacity: 1 }
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .title {
+      font-size: 2.2rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+
+/* NEW item page*/
+.row{
+    margin-right: 0 ;
+}
+
+/* Show Page */
+.show-card-container{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.show-card-container.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+.show-card-img{
+  height: 30vh;
+}
+.show-card-btn{
+  display: flex;
+  flex-wrap: wrap;
+}
+.show-card-btns{
+  margin-left: 2rem;
+}
+.show-buy-btn{
+  height: 3rem;
+  margin: 0 2rem 2rem 2rem ;
+}
+
+
+/* Privacy & Terms */
+.privacy,.terms-condition{
+  padding: 2rem;
+}
+
+
+/* Review Page */
+.review-dlt-btn{
+  padding: 0.5rem 1rem !important;
+  margin-top: 0.5rem !important;
+}
+
+ .rating-box{
+  flex-wrap: wrap !important;
+ }
+
+/* signup page */
+
+.signup{
+  cursor: pointer;
+}
+.login{
+  cursor: pointer;
+}
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 15% auto;
+    width: 300px;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .closeLogin {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+
+  /* Add to Button */
+
+  .cart-btn{
+    position: fixed;
+    background-color: #c0392b;
+    color: #fff;
+    padding: 1rem;
+    max-width: 8rem;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 10;
+  }
+  .cart-btn:hover{
+    background-color: #c5d3d2;
+  }
+
+
+  /* Order Page */
+  .order-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: center;
+  }
+  
+  .order-card {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .item-info {
+    margin-bottom: 1rem;
+  }
+
+  .item-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .add-btn,
+  .delete-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .add-btn {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+
+.alert{
+  margin-bottom: 0 !important;
+}

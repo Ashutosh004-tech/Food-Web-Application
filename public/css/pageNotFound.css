@@ -1,0 +1,42 @@
+.page-not-found-conatiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full screen height */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 400px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh; /* Full screen height */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.page-not-found {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 400px;
+}
+.page-not-found h1 {
+  font-size: 80px;
+  color: #dc3545;
+}
+.page-not-found p {
+  font-size: 24px;
+  color: #6c757d;
+}

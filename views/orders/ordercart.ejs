@@ -1,0 +1,43 @@
+<% layout('/layouts/boilerplate') %>
+
+<h1 class="heading">Order Details</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <div class="order-container">
+    <% const itemMap = new Map(); %>
+    <% for (let order of orders) {
+      const item = order.itemId;
+      if (!item || !item._id) continue;
+  
+      const key = item._id.toString();
+  
+      if (itemMap.has(key)) {
+        itemMap.get(key).quantity++;
+      } else {
+        itemMap.set(key, { item, quantity: 1 });
+      }
+    } %>
+  
+    <% itemMap.forEach(({ item, quantity }, key) => { %>
+      <div class="order-card">
+        <div class="item-info">
+          <p><b><%= item.item %></b></p>
+          <p>Price :  &#8377;<%= item.price %> <br>
+          <span>Quantity : <%= quantity %> </span></p>
+          <p style="color: #e74c3c;">Total : <%= item.price %> &times; <%= quantity %> &#x3d;  &#8377;<%= item.price * quantity %> <br>
+        </div>
+        <div class="item-actions">
+          <form method="GET" action="/order/<%= item._id %>">
+            <input type="hidden" name="itemId" value="<%= key %>">
+            <button type="submit" class="add-btn">Add Item</button>
+          </form>
+          <form method="POST" action="/order/<%= item._id %>?_method=DELETE">
+            <input type="hidden" name="itemId" value="<%= key %>">
+            <button type="submit" class="delete-btn">Delete Item</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+</div>

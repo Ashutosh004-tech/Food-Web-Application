@@ -1,0 +1,37 @@
+.empty-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full screen height */
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .empty-cart {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    max-width: 90%;
+    width: 400px;
+  }
+.empty-cart h2 {
+  font-size: 2rem;
+  color: #555;
+}
+.empty-cart p {
+  margin: 10px 0;
+  color: #888;
+}
+.empty-cart a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.empty-cart a:hover {
+  background-color: #0056b3;
+}

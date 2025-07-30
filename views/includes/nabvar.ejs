@@ -1,0 +1,100 @@
+<nav class="navbar bg-body-tertiary sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">BiriyaniByte</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">BiriyaniByte</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <% if(!crnUser){ %>
+          <li class="nav-item">
+            <a class="nav-link active signup" aria-current="page" id="signup"
+              >Signup</a
+            >
+          </li>
+          <!-- signup Modal -->
+          <div id="signupModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Select Sign Up Type</h2>
+              <a href="/admin/signup" class="btn btn-dark mb-2"
+                >Sign up as Admin</a
+              >
+              <a href="/user/signup" class="btn btn-success">Sign up as User</a>
+            </div>
+          </div>
+          <% } %>
+          <li class="nav-item">
+            <% if(!crnUser){ %>
+            <a
+              class="nav-link active login"
+              aria-current="page"
+              id="login"
+              >Login</a
+            >
+          </li>
+          <!-- signup Modal -->
+          <div id="loginpModal" class="modal">
+            <div class="modal-content">
+              <span class="closeLogin">&times;</span>
+              <h2>Select Login Type</h2>
+              <a href="/admin/login" class="btn btn-dark mb-2"
+                >Login as Admin</a
+              >
+              <a href="/user/login" class="btn btn-success">login as User</a>
+            </div>
+          </div>
+          <% } %>
+          <!-- logout  -->
+          <% if(crnUser){ %>
+          <li class="nav-item">
+            <a class="nav-link logout" href="/logout" id="logout">Logout</a>
+          </li>
+          <% } %>
+          <!-- Add a new Item -->
+          <% if(isAdmin){ %>
+          <li>
+            <a href="/items/new" class="nav-link active">Add a new Item</a>
+          </li>
+          <% } %>
+        </ul>
+        <form class="d-flex mt-3" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+<script src="../js/signup.js"></script>
+<script src="../js/login.js"></script>
