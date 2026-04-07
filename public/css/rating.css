@@ -98,7 +98,7 @@
   left: 0;
   width: 100%;
   height: 30px;
-  outline: 2px dotted #999;
+  outline: 2px dotted #8d8d8d;
   pointer-events: none;
   opacity: 0;
 }
