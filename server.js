@@ -137,7 +137,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server Started");
 });
 
