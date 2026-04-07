@@ -35,7 +35,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(Mongo_URL);
+  await mongoose.connect(process.env.MongoDB_URL);
 }
 
 //app setup
@@ -48,7 +48,7 @@ app.engine("ejs", ejsMate);
 
 // Session Option
 const sessionOption = {
-  secret : Session_Secret,
+  secret : process.env.SESSION_SECRECT,
   resave:false,
   saveUninitialized : true,
   cookie:{
