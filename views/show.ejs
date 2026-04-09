@@ -51,9 +51,17 @@
           <button type="submit" class="show-btn show-btn-secondary">Delete</button>
         </form>
         <% } %>
+        
+        <!-- Add to Cart Button -->
+        <% if(crnUser && !isAdmin){ %>
         <a href="/order/<%= item._id %>" class="show-btn show-btn-primary">
           Add to Cart
         </a>
+        <% } else if(!crnUser){ %>
+        <a href="/user/login" class="show-btn show-btn-primary">
+          Login to Order
+        </a>
+        <% } %>
       </div>
 
       <!-- Reviews Section -->

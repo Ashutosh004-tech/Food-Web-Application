@@ -29,17 +29,18 @@ router.get("/:id", isUserLoggedIn, wrapAsync( async (req, res) => {
     const userId = req.user._id;
 
     // Create a new order
-    const newOrder = new Order({ itemId });
+    const newOrder = new Order({ itemId, userId });
     await newOrder.save();
 
     // Add order to the user's order array
     const user = await User.findById(userId);
     user.order.push(newOrder._id);
     await user.save();
-    req.flash("success", "Order added Successfully");
+    req.flash("success", "Item added to cart successfully!");
     res.redirect("/order/cart");
   } catch (err) {
-    res.status(500).json({ error: "Internal server error" });
+    req.flash("error", "Failed to add item to cart");
+    res.redirect("back");
   }
 }));
 
@@ -48,18 +49,22 @@ router.delete("/:id", isUserLoggedIn, wrapAsync(async (req, res) => {
   try {
     const { id } = req.params;
 
-    const orderToDelete = await Order.findOne({ itemId: id });
+    const orderToDelete = await Order.findOne({ itemId: id, userId: req.user._id });
 
     if (orderToDelete) {
       await Order.findByIdAndDelete(orderToDelete._id);
       await User.findByIdAndUpdate(req.user._id, {
         $pull: { order: orderToDelete._id }
       });
+      req.flash("success", "Item removed from cart");
+    } else {
+      req.flash("error", "Order not found");
     }
 
     res.redirect("/order/cart");
   } catch (err) {
-    throw new ExpressError(404, "Something went wrong");
+    req.flash("error", "Failed to remove item from cart");
+    res.redirect("/order/cart");
   }
 }));
 
