@@ -32,57 +32,45 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <% if(!crnUser){ %>
-          <li class="nav-item">
-            <a class="nav-link active signup" aria-current="page" id="signup"
-              >Signup</a
-            >
-          </li>
-          <!-- signup Modal -->
-          <div id="signupModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h2>Select Sign Up Type</h2>
-              <a href="/admin/signup" class="btn btn-dark mb-2"
-                >Sign up as Admin</a
-              >
-              <a href="/user/signup" class="btn btn-success">Sign up as User</a>
-            </div>
-          </div>
+            <li class="nav-item">
+              <a class="nav-link active signup" aria-current="page" id="signup">Signup</a>
+            </li>
           <% } %>
-          <li class="nav-item">
-            <% if(!crnUser){ %>
-            <a
-              class="nav-link active login"
-              aria-current="page"
-              id="login"
-              >Login</a
-            >
-          </li>
-          <!-- signup Modal -->
-          <div id="loginpModal" class="modal">
-            <div class="modal-content">
-              <span class="closeLogin">&times;</span>
-              <h2>Select Login Type</h2>
-              <a href="/admin/login" class="btn btn-dark mb-2"
-                >Login as Admin</a
-              >
-              <a href="/user/login" class="btn btn-success">login as User</a>
-            </div>
-          </div>
+          <% if(!crnUser){ %>
+            <li class="nav-item">
+              <a class="nav-link active login" aria-current="page" id="login">Login</a>
+            </li>
           <% } %>
-          <!-- logout  -->
           <% if(crnUser){ %>
-          <li class="nav-item">
-            <a class="nav-link logout" href="/logout" id="logout">Logout</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link logout" href="/logout" id="logout">Logout</a>
+            </li>
           <% } %>
-          <!-- Add a new Item -->
           <% if(isAdmin){ %>
-          <li>
-            <a href="/items/new" class="nav-link active">Add a new Item</a>
-          </li>
+            <li class="nav-item">
+              <a href="/items/new" class="nav-link active">Add a new Item</a>
+            </li>
           <% } %>
         </ul>
+        <!-- Signup Modal -->
+        <div id="signupModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Sign Up Type</h2>
+            <a href="/admin/signup" class="btn btn-dark mb-2">Sign up as Admin</a>
+            <a href="/user/signup" class="btn btn-success">Sign up as User</a>
+          </div>
+        </div>
+        <!-- Login Modal -->
+        <div id="loginpModal" class="modal">
+          <div class="modal-content">
+            <span class="closeLogin">&times;</span>
+            <h2>Select Login Type</h2>
+            <a href="/admin/login" class="btn btn-dark mb-2">Login as Admin</a>
+            <a href="/user/login" class="btn btn-success">login as User</a>
+          </div>
+        </div>
+        <!-- Search Form -->
         <form class="d-flex mt-3" role="search">
           <input
             class="form-control me-2"
