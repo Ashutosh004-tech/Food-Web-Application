@@ -10,7 +10,8 @@
 .empty-cart {
   text-align: center;
   padding: 2rem;
-  background-color: #f4ecec;
+  background-color: #FFF8F0;
+  border: 2px solid #D4842F;
   border-radius: 8px;
   max-width: 90%;
   width: 400px;
@@ -27,16 +28,18 @@
 .page-not-found {
   text-align: center;
   padding: 2rem;
-  background-color: #f0f0f0;
+  background-color: #FFF8F0;
+  border: 2px solid #D4842F;
   border-radius: 8px;
   max-width: 90%;
   width: 400px;
 }
 .page-not-found h1 {
   font-size: 80px;
-  color: #dc3545;
+  color: #C1272D;
+  font-weight: 700;
 }
 .page-not-found p {
   font-size: 24px;
-  color: #6c757d;
+  color: #8B4513;
 }
